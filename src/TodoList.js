@@ -57,6 +57,14 @@ class TodoList extends Component {
 		if(radioB2.checked==true){
 
 
+				var filteredItems = this.state.items.filter(function (item) {
+				return (item.key !== key)
+				});
+
+				this.setState({
+					items:filteredItems
+				});
+
 			if(this._inputElement.value !== "")
 			{
 				var newItem = {
@@ -71,15 +79,9 @@ class TodoList extends Component {
 				});
 			}
 
-			// var filteredItems = this.state.items.filter(function (item) {
-			// 	return (item.key !== key)
-			// 	});
+			
 
-			// 	this.setState({
-			// 		items:filteredItems
-			// 	});
-					
-			// this._inputElement.value = "";
+			this._inputElement.value = "";
 
 
 
