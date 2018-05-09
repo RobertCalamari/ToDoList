@@ -12,26 +12,31 @@ class TodoList extends Component {
 
 		this.addItem = this.addItem.bind(this);
 		this.deleteItem = this.deleteItem.bind(this);
+		this.subItem = this.subItem.bind(this);
 	}
 
 	addItem(e) {
-		if(this._inputElement.value !== "")
-		{
-			var newItem = {
-				text: this._inputElement.value,
-				key: Date.now()
-			};
 
-			this.setState((prevState) => {
-				return{
-					items: prevState.items.concat(newItem)
+
+
+			if(this._inputElement.value !== "")
+			{
+				var newItem = {
+					text: this._inputElement.value,
+					key: Date.now()
 				};
-			});
-		}
 
-		this._inputElement.value = "";
+				this.setState((prevState) => {
+					return{
+						items: prevState.items.concat(newItem)
+					};
+				});
+			}
 
-		e.preventDefault();
+			this._inputElement.value = "";
+
+			e.preventDefault();
+		
 	}
 
 	deleteItem(key) {
@@ -46,29 +51,50 @@ class TodoList extends Component {
  
 	subItem(e) {
 
-		var editB = document.getElementById('editbut');
-		var addB = document.getElementById('addbut');
-		var inpT = document.getElementById('inptask');
+		var radioB1 = document.getElementById('rad1');
+		var radioB2 = document.getElementById('rad2');
+		var radioB3 = document.getElementById('rad3');
 
-		addB.color="#e6f811";
-		inpT.value="HELLO";
 
-		e.preventDefault();
+		if(radioB1.checked == "checked")
+		{
+			
+		}
+				if(this._inputElement.value !== "")
+			{
+				var newItem = {
+					text: this._inputElement.value,
+					key: Date.now()
+				};
+
+				this.setState((prevState) => {
+					return{
+						items: prevState.items.concat(newItem)
+					};
+				});
+			}
+
+			this._inputElement.value = "";
+
+			e.preventDefault();
+
+	
 
 	}
-
 
 	render() {
 		return (
 
 			<div className="todoListMain">
 				<div className="header">
-					<form onSubmit={this.addItem}>
+					<form onSubmit={this.subItem}>
 						<input id="inptask" ref={(a) => this._inputElement = a} placeholder="Enter Task"></input>
-						<button type="submit" id="addbut">Add</button>
+						<button type="submit" id="addbut">Submit</button>
 					</form>
-						<button type="submit" id="editbut">Edit</button>
-						<button type="submit" id="delbut">Del</button>
+						Add <input type="radio" id="rad1" name="sub" value="add" checked="checked"/><br/>
+						Edit<input type="radio" id="rad2" name="sub" value="edit"/><br/>
+						Del<input type="radio" id="rad3" name="sub" value="delete"/>
+						
 				</div>
 				<TodoItems entries={this.state.items} delete={this.deleteItem}/>
 			</div>
