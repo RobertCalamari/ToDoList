@@ -88,8 +88,8 @@ class TodoList extends Component {
 
 
 		}
-		else
-		{
+		if(radioB3.checked==true){
+		
 
 			var filteredItems = this.state.items.filter(function (item) {
 				return (item.key !== key)
