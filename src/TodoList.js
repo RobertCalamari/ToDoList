@@ -44,15 +44,31 @@ class TodoList extends Component {
 		});
 	}
  
+	subItem(e) {
+
+		var editB = document.getElementById('editbut');
+		var addB = document.getElementById('addbut');
+		var inpT = document.getElementById('inptask');
+
+		addB.color="#e6f811";
+		inpT.value="HELLO";
+
+		e.preventDefault();
+
+	}
+
+
 	render() {
 		return (
 
 			<div className="todoListMain">
 				<div className="header">
 					<form onSubmit={this.addItem}>
-						<input  ref={(a) => this._inputElement = a}placeholder="Enter Task"></input>
-						<button type="submit">add</button>
+						<input id="inptask" ref={(a) => this._inputElement = a} placeholder="Enter Task"></input>
+						<button type="submit" id="addbut">Add</button>
 					</form>
+						<button type="submit" id="editbut">Edit</button>
+						<button type="submit" id="delbut">Del</button>
 				</div>
 				<TodoItems entries={this.state.items} delete={this.deleteItem}/>
 			</div>
